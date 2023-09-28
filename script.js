@@ -183,7 +183,7 @@ const quizData = [
         "Un comando de terminal",
         "Una función en JavaScript"
       ],
-      respuestaCorrecta: 2,
+      respuestaCorrecta: 1,
       dificultad: "Difícil"
     },
     {
