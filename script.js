@@ -425,7 +425,7 @@ const quizData = [
         "Un comando de terminal",
         "Una función en JavaScript"
       ],
-      respuestaCorrecta: 2,
+      respuestaCorrecta: 1,
       dificultad: "Difícil"
     },
     {
@@ -533,25 +533,23 @@ const quizData = [
 
   document.addEventListener('DOMContentLoaded', () => {
     showQuestion(quizData)
-
     document.querySelector('#send').addEventListener('click', (e) => {
         e.preventDefault();
         const selectedOption = document.querySelector('input[name="option"]:checked');
-    
+        let contadorSpan = document.getElementById("contador");
+        let valorActual = parseInt(contadorSpan.textContent);
         if (selectedOption) {
             const selectedId = parseInt(selectedOption.id);
             if (selectedId === quizData[n].respuestaCorrecta) {
                 document.getElementById('answer').innerHTML = '<p class="display-4" style="color: green">Correcto</p>';
+                valorActual++;
+                contadorSpan.textContent = valorActual;
             } else {
                 document.getElementById('answer').innerHTML = '<p class="display-4" style="color: red">Incorrecto</p>';
             }
         } else {
             document.getElementById('answer').innerText = 'Por favor, selecciona una opción';
         }
-    });
-    
-    document.querySelector('#newQuestion').addEventListener('click', (e) => {
-        e.preventDefault();
         randomNumber(quizData);
         showQuestion(quizData);
         document.getElementById('answer').innerHTML = '';
