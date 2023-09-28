@@ -205,7 +205,7 @@ const quizData = [
         "Una función en JavaScript",
         "Una clave para abrir una caja fuerte"
       ],
-      respuestaCorrecta: 2,
+      respuestaCorrecta: 1,
       dificultad: "Difícil"
     },
     {
