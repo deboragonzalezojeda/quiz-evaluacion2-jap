@@ -1,5 +1,5 @@
 const quizData = [
-    {
+   {
       pregunta: "¿Qué son las API Rest?",
       opciones: [
         "Un conjunto de reglas para diseñar bases de datos",
@@ -482,7 +482,73 @@ const quizData = [
       ],
       respuestaCorrecta: 1,
       dificultad: "Difícil"
+    }, 
+    {
+      pregunta: "¿Qué problema podría ocurrir con este código si la solicitud Fetch falla y cómo se puede agregar manejo de errores?",
+      opciones: [ 
+      " No hay problema con este código.",
+      " Si la solicitud Fetch falla, la consola mostrará un error y seguirá funcionando correctamente.",
+      " Si la solicitud Fetch falla, no habrá manejo de errores y el código no se comportará adecuadamente.",
+      " Si la solicitud Fetch falla, el navegador mostrará una ventana emergente de error al usuario.",
+      ],
+      respuestaCorrecta: 2,
+      dificultad: "Media",
+      imagen:"Pregunta1.PNG",
+    },
+    {
+    //pregunta 2
+    pregunta: "¿Cuál es el problema con esta validación de formulario y qué mejoras se pueden hacer para proporcionar una experiencia de usuario más clara?",
+    opciones:[ 
+    "La validación de formulario está completa y no necesita mejoras.",
+    "El código no tiene ningún problema y proporciona una experiencia de usuario clara.",
+    " El problema es que no se utiliza event.preventDefault() y la página se recargará después de enviar el formulario.",
+    " El problema es que solo se verifica si los campos están vacíos, pero no se verifica ningún otro criterio de validación.",
+    ],
+    respuestaCorrecta: 2,
+    dificultad: "Media",
+    imagen:"Pregunta2.PNG",
+  },
+    {
+      //pregunta 3
+      pregunta: " ¿Cuál es el error en la URL de la solicitud Fetch y cómo se debe corregir para que sea válida?",
+      opciones: [ 
+        " La URL es correcta y no necesita correcciones.",
+        " El error en la URL es que falta el protocolo https://y debe agregarse.",
+        " El error en la URL es que contiene una t adicional en htps:// y debe cambiarse a https://.",
+        "El error en la URL es que contiene una p adicional en htps:// y debe cambiarse a https://.",
+      ],
+      respuestaCorrecta: 2,
+      dificultad: "Media",
+      imagen:"Pregunta3.PNG",
+    },
+    {
+      //pregunta 4
+      pregunta: "  ¿Qué problema de validación existe en este código y qué criterio debería cumplir una contraseña válida?",
+      opciones: [ 
+        "El código está validando la contraseña correctamente.",
+        "El problema es que la longitud mínima de la contraseña debe ser de 6 caracteres en lugar de 8.",
+        "El problema es que la longitud mínima de la contraseña debe ser de 10 caracteres en lugar de 8.",
+        "El problema es que la longitud mínima de la contraseña debe ser de 12 caracteres en lugar de 8.",
+      ],
+      respuestaCorrecta: 3,
+      dificultad: "Media",
+      imagen:"Pregunta4.PNG",
+    },
+    {
+      //pregunta 5
+      pregunta: "¿Por qué es importante verificar si la respuesta Fetch es exitosa y qué se debe hacer si la respuesta no es exitosa?",
+      opciones: [ 
+      "No es importante verificar la respuesta Fetch; siempre se considera exitosa.",
+      " Es importante verificar la respuesta Fetch para asegurarse de que los datos se recibieron correctamente.",
+      " Si la respuesta Fetch no es exitosa, simplemente se ignora y no es necesario hacer nada.",
+      " Si la respuesta Fetch no es exitosa, se lanza un error y se maneja utilizando .catch().",
+      ],
+      respuestaCorrecta: 1,
+      dificultad: "Media",
+      imagen:"Pregunta5.PNG",
+
     }
+
   ];
 
   let n;
@@ -496,40 +562,44 @@ const quizData = [
   const quizDiv = document.querySelector('#quiz');
 
   function showQuestion(data) {
-
     randomNumber(quizData);
+  
+    const preguntaActual = quizData[n];
+  
+    quizDiv.innerHTML = ''; 
 
-    quizDiv.innerHTML = `
-
-    <h2 class="fw-light pb-3">${data[n].pregunta}</h2>
-
-    <p class="fw-light">Dificultad: ${data[n].dificultad}</p>
-
-    <form>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="option" id="0">
-            <label class="form-check-label" for="0">${data[n].opciones[0]}</label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="option" id="1">
-            <label class="form-check-label" for="1">${data[n].opciones[1]}</label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="option" id="2">
-            <label class="form-check-label" for="2">${data[n].opciones[2]}</label>
-        </div>
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="option" id="3">
-            <label class="form-check-label" for="3">${data[n].opciones[3]}</label>
-        </div>
-
-    </form>
-
-    `
+    if (preguntaActual.imagen) {
+      const img = `<img src="${preguntaActual.imagen}" alt="Imagen de la pregunta">`;
+      quizDiv.innerHTML += `<div>${img}</div>`;
+    }
+  
+    quizDiv.innerHTML += `
+      <h2 class="fw-light pb-3">${data[n].pregunta}</h2>
+      <p class="fw-light">Dificultad: ${data[n].dificultad}</p>
+      <form>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="option" id="0">
+              <label class="form-check-label" for="0">${data[n].opciones[0]}</label>
+          </div>
+  
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="option" id="1">
+              <label class="form-check-label" for="1">${data[n].opciones[1]}</label>
+          </div>
+  
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="option" id="2">
+              <label class="form-check-label" for="2">${data[n].opciones[2]}</label>
+          </div>
+  
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="option" id="3">
+              <label class="form-check-label" for="3">${data[n].opciones[3]}</label>
+          </div>
+      </form>
+    `;
   }
+  
 
   document.addEventListener('DOMContentLoaded', () => {
     showQuestion(quizData)
